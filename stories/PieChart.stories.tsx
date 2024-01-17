@@ -18,7 +18,15 @@ const meta: Meta<typeof PieChart> = {
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/configure/story-layout
         layout: 'centered',
-    }
+    },
+    /*argTypes: {
+        palette: {
+            control: {
+                type: 'select',
+                options: ['Bright', 'Harmony Light', 'Ocean', 'Pastel', 'Soft', 'Soft Pastel', 'Vintage', 'Violet', 'Carmine', 'Dark Moon', 'Dark Violet', 'Green Mist', 'Soft Blue', 'Material', 'Office']
+            }
+        }
+    }*/
 };
 
 export default meta;
@@ -39,14 +47,21 @@ function toggleVisibility(item) {
 }
 
 export const Overview: Story = {
-    render: () => (
+    args: {
+        dataSource: areas,
+        palette: "Bright",
+        title: "Area of Countries",
+        onPointClick: pointClickHandler,
+        onLegendClick: legendClickHandler
+    },
+    render: ({ dataSource, palette, title, onPointClick, onLegendClick }) => (
         <PieChart
             id="pie"
-            dataSource={areas}
-            palette="Bright"
-            title="Area of Countries"
-            onPointClick={pointClickHandler}
-            onLegendClick={legendClickHandler}
+            title={title}
+            dataSource={dataSource}
+            palette={palette}
+            onPointClick={onPointClick}
+            onLegendClick={onLegendClick}
         >
             <Series argumentField="country" valueField="area">
                 <Label visible={true}>
