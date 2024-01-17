@@ -14,9 +14,9 @@ import DataGrid, {
 import DiscountCell from "../demos/data-grid/DiscountCell";
 import ODataStore from "devextreme/data/odata/store";
 
-const meta: Meta<typeof Header> = {
+const meta: Meta<typeof DataGrid> = {
     title: 'Example/DataGrid',
-    component: Header,
+    component: DataGrid,
     // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/writing-docs/autodocs
     tags: ['autodocs'],
     parameters: {
