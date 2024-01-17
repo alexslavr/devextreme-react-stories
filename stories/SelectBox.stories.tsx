@@ -93,25 +93,31 @@ export const CustomTemplates: Story = {
     },
 }
 
-export const EventHandling: React.FC = () => {
-    const [value, setValue] = useState(service.getSimpleProducts()[0]);
+export const EventHandling: Story = {
+    args: {
+        items: simpleProducts,
+        inputAttr: productLabel
+    },
+    render: ({ items, inputAttr}) => {
+        const [value, setValue] = useState(service.getSimpleProducts()[0]);
 
-    const onValueChanged = useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
-        setValue(e.value);
-        notify(`The value is changed to: "${e.value}"`);
-    }, []);
+        const onValueChanged = useCallback((e: SelectBoxTypes.ValueChangedEvent) => {
+            setValue(e.value);
+            notify(`The value is changed to: "${e.value}"`);
+        }, []);
 
-    return (
-        <div>
-            <SelectBox
-                items={simpleProducts}
-                value={value}
-                inputAttr={productLabel}
-                onValueChanged={onValueChanged}
-            />
-            <div className="current-value">
-                Selected product is <span>{value}</span>
+        return (
+            <div>
+                <SelectBox
+                    items={items}
+                    value={value}
+                    inputAttr={inputAttr}
+                    onValueChanged={onValueChanged}
+                />
+                <div className="current-value">
+                    Selected product is <span>{value}</span>
+                </div>
             </div>
-        </div>
-    );
+        );
+    }
 }
