@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { Header } from './Header';
-import React, {useCallback, useState} from "react";
+import React, { useCallback, useState } from "react";
 
 import DataGrid, {
     Column,

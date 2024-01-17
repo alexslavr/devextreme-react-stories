@@ -17,19 +17,13 @@ const meta: Meta<typeof PieChart> = {
     tags: ['autodocs'],
     parameters: {
         // More on Story layout: https://storybook.js.org/docs/configure/story-layout
-        layout: 'fullscreen',
-    },
-    argTypes: {
-        dataSource: {
-            control: {
-                type: 'object'
-            }
-        }
+        layout: 'centered',
     }
 };
 
 export default meta;
 
+type Story = StoryObj<typeof PieChart>;
 function pointClickHandler(e: PieChartTypes.PointClickEvent) {
     toggleVisibility(e.target);
 }
@@ -44,8 +38,8 @@ function toggleVisibility(item) {
     item.isVisible() ? item.hide() : item.show();
 }
 
-export const Overview: React.FC = () => {
-    return (
+export const Overview: Story = {
+    render: () => (
         <PieChart
             id="pie"
             dataSource={areas}
@@ -63,5 +57,5 @@ export const Overview: React.FC = () => {
             <Size width={500}/>
             <Export enabled={true}/>
         </PieChart>
-    );
+    )
 }
