@@ -22,6 +22,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: "tag",
   },
-  staticDirs: ['../images']
+  staticDirs: ['../images', '../node_modules/devextreme/dist']
 };
 export default config;
